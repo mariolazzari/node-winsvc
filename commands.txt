@@ -1,4 +1,4 @@
-nssm.exe instal NodeServiceTest
+nssm.exe install NodeServiceTest
 nssm.exe remove NodeServiceTest
 
 nssm.exe start NodeServiceTest

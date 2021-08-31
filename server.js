@@ -1,21 +1,16 @@
-const fs = require("fs");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const check = fs.existsSync("logs");
-if (!check) {
-  fs.mkdirSync("logs");
-}
+const logger = require("./utils/logger");
 
 setInterval(() => {
-  const now = new Date();
-  fs.writeFileSync(
-    "logs/" +
-      now.getDate() +
-      (now.getMonth() + 1) +
-      now.getDate() +
-      now.getHours() +
-      now.getMinutes() +
-      now.getSeconds() +
-      ".log",
-    now.toLocaleString()
-  );
+  const x = Math.random();
+  const y = Math.random();
+
+  if (y > x) {
+    logger.error("Program exited: " + x + " < " + y);
+    process.exit(1);
+  } else {
+    logger.info("Program running: " + x + " > " + y);
+  }
 }, 5000);
